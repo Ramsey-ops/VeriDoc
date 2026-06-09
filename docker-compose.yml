@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: .
+    container_name: veridoc-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app/app
+      - ./storage:/app/storage
+
+  db:
+    image: postgres:16
+    container_name: veridoc-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: veridoc_user
+      POSTGRES_PASSWORD: veridoc_password
+      POSTGRES_DB: veridoc_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veridoc_user -d veridoc_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

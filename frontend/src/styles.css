@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #101914;
+  background: #fbfaf7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(18, 185, 129, 0.12), transparent 34rem),
+    linear-gradient(180deg, #fbfaf7 0%, #f5f7f2 52%, #eef4ef 100%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(18, 185, 129, 0.22);
+}
+
+.glass-panel {
+  border: 1px solid rgba(16, 25, 20, 0.08);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 24px 80px rgba(7, 17, 13, 0.1);
+  backdrop-filter: blur(24px);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(16, 25, 20, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 25, 20, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(16, 25, 20, 0.06), rgba(255, 255, 255, 0.82), rgba(16, 25, 20, 0.06));
+  background-size: 220% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 220% 0;
+  }
+  100% {
+    background-position: -220% 0;
+  }
+}
